@@ -324,9 +324,64 @@ textarea:focus {
   line-height: 1.36;
 }
 
+.quoted-message {
+  margin-bottom: 8px;
+  padding: 7px 9px;
+  border-left: 3px solid var(--accent);
+  border-radius: 6px;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.58);
+}
+
+.message.own .quoted-message {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.16);
+  border-left-color: rgba(255, 255, 255, 0.72);
+}
+
+.quoted-author,
+.reply-preview span {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
+.quoted-text,
+.reply-preview p {
+  display: -webkit-box;
+  margin: 0;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 1.28;
+  overflow-wrap: anywhere;
+}
+
+.message-meta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+
+.reply-button {
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  opacity: 0.74;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.reply-button:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
 .message-time {
   display: block;
-  margin-top: 4px;
   opacity: 0.72;
   font-size: 0.72rem;
   text-align: right;
@@ -334,12 +389,81 @@ textarea:focus {
 
 .composer {
   display: grid;
-  grid-template-columns: 1fr 48px;
+  grid-template-columns: 48px 1fr 48px;
   gap: 10px;
   align-items: end;
   padding: 14px;
   border-top: 1px solid var(--line);
   background: #fff;
+}
+
+.reply-preview {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 32px;
+  gap: 10px;
+  align-items: center;
+  padding: 9px 10px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  color: var(--ink);
+  background: var(--soft);
+}
+
+.reply-preview button {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border-radius: 8px;
+  color: var(--muted);
+  background: #fff;
+  font-weight: 900;
+}
+
+.emoji-wrap {
+  position: relative;
+}
+
+.emoji-button {
+  display: grid;
+  width: 48px;
+  min-height: 48px;
+  place-items: center;
+  border-radius: 8px;
+  color: var(--accent-dark);
+  background: #f1e9ff;
+  font-weight: 900;
+}
+
+.emoji-picker {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 0;
+  display: grid;
+  width: min(280px, calc(100vw - 28px));
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 14px 34px rgba(70, 45, 105, 0.2);
+  z-index: 2;
+}
+
+.emoji-picker button {
+  display: grid;
+  min-height: 34px;
+  place-items: center;
+  border-radius: 6px;
+  background: transparent;
+  font-size: 1.08rem;
+}
+
+.emoji-picker button:hover {
+  background: var(--soft);
 }
 
 .hidden {

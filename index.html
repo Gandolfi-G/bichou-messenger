@@ -69,6 +69,19 @@
         <ol class="messages" id="messages" aria-live="polite"></ol>
 
         <form class="composer" id="messageForm">
+          <div class="reply-preview hidden" id="replyPreview">
+            <div>
+              <span id="replyAuthor">Message</span>
+              <p id="replyText"></p>
+            </div>
+            <button type="button" id="cancelReplyButton" title="Annuler la reponse">x</button>
+          </div>
+          <div class="emoji-wrap">
+            <button type="button" class="emoji-button" id="emojiButton" title="Ajouter un emoji">
+              :)
+            </button>
+            <div class="emoji-picker hidden" id="emojiPicker" aria-label="Emojis"></div>
+          </div>
           <textarea
             id="messageInput"
             name="messageInput"
@@ -87,8 +100,15 @@
     <template id="messageTemplate">
       <li class="message">
         <div class="bubble">
+          <div class="quoted-message hidden">
+            <span class="quoted-author"></span>
+            <p class="quoted-text"></p>
+          </div>
           <p class="message-text"></p>
-          <time class="message-time"></time>
+          <div class="message-meta">
+            <button type="button" class="reply-button">Repondre</button>
+            <time class="message-time"></time>
+          </div>
         </div>
       </li>
     </template>
