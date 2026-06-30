@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Session Chat</title>
+    <meta
+      name="description"
+      content="Chat instantane statique par code de session, pret pour GitHub Pages."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="join-panel" id="joinPanel" aria-labelledby="joinTitle">
+        <div class="brand-row">
+          <div class="brand-mark" aria-hidden="true">SC</div>
+          <div>
+            <h1 id="joinTitle">Session Chat</h1>
+            <p>Un salon temporaire, un code partage, une discussion directe.</p>
+          </div>
+        </div>
+
+        <form class="session-form" id="sessionForm">
+          <label for="sessionCode">Code de session</label>
+          <div class="code-row">
+            <input
+              id="sessionCode"
+              name="sessionCode"
+              type="text"
+              inputmode="latin"
+              autocomplete="off"
+              spellcheck="false"
+              maxlength="32"
+              placeholder="ex: LUNE-4821"
+            />
+            <button type="button" class="icon-button" id="randomCodeButton" title="Generer un code">
+              R
+            </button>
+          </div>
+          <button type="submit" class="primary-button">Entrer dans la session</button>
+        </form>
+
+        <p class="privacy-note">
+          Les messages restent dans les navigateurs connectes. Fermer l'onglet efface la discussion.
+        </p>
+      </section>
+
+      <section class="chat-panel hidden" id="chatPanel" aria-label="Discussion">
+        <header class="chat-header">
+          <div>
+            <span class="eyebrow">Session</span>
+            <h2 id="roomLabel">...</h2>
+          </div>
+          <div class="header-actions">
+            <button type="button" class="secondary-button" id="copyLinkButton">Copier le lien</button>
+            <button type="button" class="ghost-button" id="leaveButton">Quitter</button>
+          </div>
+        </header>
+
+        <div class="status-bar" id="statusBar" role="status">
+          Connexion au salon...
+        </div>
+
+        <ol class="messages" id="messages" aria-live="polite"></ol>
+
+        <form class="composer" id="messageForm">
+          <textarea
+            id="messageInput"
+            name="messageInput"
+            rows="1"
+            maxlength="1200"
+            placeholder="Ecrire un message..."
+            aria-label="Message"
+          ></textarea>
+          <button type="submit" class="send-button" id="sendButton" title="Envoyer">
+            &gt;
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <template id="messageTemplate">
+      <li class="message">
+        <div class="bubble">
+          <p class="message-text"></p>
+          <time class="message-time"></time>
+        </div>
+      </li>
+    </template>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
