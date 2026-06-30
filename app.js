@@ -16,9 +16,12 @@ const copyLinkButton = document.querySelector("#copyLinkButton");
 const leaveButton = document.querySelector("#leaveButton");
 const messageTemplate = document.querySelector("#messageTemplate");
 
+const baseTitle = document.title;
+
 let room = null;
 let sendChatMessage = null;
 let peers = new Set();
+let unreadCount = 0;
 
 const adjectives = ["LUNE", "SOLEIL", "RIVAGE", "PIXEL", "BRUME", "NOVA", "ONDE"];
 
@@ -54,6 +57,21 @@ function setStatus() {
       : `${count} personne${count > 1 ? "s" : ""} connectee${count > 1 ? "s" : ""}.`;
 }
 
+function updateTitleNotification() {
+  document.title = unreadCount > 0 ? `(${unreadCount}) ${baseTitle}` : baseTitle;
+}
+
+function clearUnreadMessages() {
+  unreadCount = 0;
+  updateTitleNotification();
+}
+
+function markUnreadMessage() {
+  if (!document.hidden) return;
+  unreadCount += 1;
+  updateTitleNotification();
+}
+
 function addMessage(text, type = "received", date = new Date()) {
   const node = messageTemplate.content.firstElementChild.cloneNode(true);
   node.classList.add(type);
@@ -85,6 +103,7 @@ function leaveRoom() {
   room = null;
   sendChatMessage = null;
   peers = new Set();
+  clearUnreadMessages();
   messages.replaceChildren();
   statusBar.textContent = "Connexion au salon...";
   chatPanel.classList.add("hidden");
@@ -121,6 +140,7 @@ async function joinSession(rawCode) {
   getChatMessage((payload) => {
     if (!payload || typeof payload.text !== "string") return;
     addMessage(payload.text, "received", new Date(payload.sentAt || Date.now()));
+    markUnreadMessage();
   });
 
   setStatus();
@@ -181,6 +201,12 @@ copyLinkButton.addEventListener("click", async () => {
 });
 
 leaveButton.addEventListener("click", leaveRoom);
+
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden) {
+    clearUnreadMessages();
+  }
+});
 
 const initialCode = getRouteCode();
 sessionCodeInput.value = initialCode || createSessionCode();
