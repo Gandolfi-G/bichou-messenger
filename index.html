@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Session Chat</title>
+    <title>Bichou Messenger</title>
     <meta
       name="description"
-      content="Chat instantane statique par code de session, pret pour GitHub Pages."
+      content="Bichou Messenger, chat instantane statique par code de session."
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
@@ -14,9 +14,10 @@
     <main class="app-shell">
       <section class="join-panel" id="joinPanel" aria-labelledby="joinTitle">
         <div class="brand-row">
-          <div class="brand-mark" aria-hidden="true">SC</div>
+          <div class="brand-mark" aria-hidden="true">bm</div>
           <div>
-            <h1 id="joinTitle">Session Chat</h1>
+            <p class="brand-name">bichou messenger</p>
+            <h1 id="joinTitle">Chat instantane</h1>
             <p>Un salon temporaire, un code partage, une discussion directe.</p>
           </div>
         </div>
@@ -48,9 +49,12 @@
 
       <section class="chat-panel hidden" id="chatPanel" aria-label="Discussion">
         <header class="chat-header">
-          <div>
-            <span class="eyebrow">Session</span>
-            <h2 id="roomLabel">...</h2>
+          <div class="chat-title">
+            <span class="mini-logo" aria-hidden="true">bm</span>
+            <div>
+              <span class="eyebrow">Session</span>
+              <h2 id="roomLabel">...</h2>
+            </div>
           </div>
           <div class="header-actions">
             <button type="button" class="secondary-button" id="copyLinkButton">Copier le lien</button>

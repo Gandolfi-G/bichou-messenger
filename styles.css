@@ -1,15 +1,16 @@
 :root {
   color-scheme: light;
-  --bg: #f4f7fb;
-  --panel: #ffffff;
-  --ink: #182230;
-  --muted: #637083;
-  --line: #d8e0ea;
-  --accent: #1677ff;
-  --accent-dark: #095cc7;
-  --sent: #1677ff;
-  --received: #edf2f7;
-  --shadow: 0 20px 55px rgba(24, 34, 48, 0.14);
+  --bg: #f8f5ff;
+  --panel: #fff;
+  --ink: #282037;
+  --muted: #786b8e;
+  --line: #e4dcef;
+  --accent: #9b6be8;
+  --accent-dark: #7445c6;
+  --sent: #9b6be8;
+  --received: #f0e9fb;
+  --soft: #fbf8ff;
+  --shadow: 0 20px 55px rgba(70, 45, 105, 0.15);
 }
 
 * {
@@ -29,8 +30,8 @@ body {
     sans-serif;
   color: var(--ink);
   background:
-    linear-gradient(135deg, rgba(22, 119, 255, 0.12), transparent 36%),
-    linear-gradient(315deg, rgba(40, 180, 140, 0.13), transparent 32%),
+    linear-gradient(135deg, rgba(173, 132, 232, 0.22), transparent 36%),
+    linear-gradient(315deg, rgba(220, 191, 245, 0.32), transparent 34%),
     var(--bg);
 }
 
@@ -75,14 +76,16 @@ button {
 
 .brand-mark {
   display: grid;
-  width: 52px;
-  height: 52px;
+  width: 50px;
+  height: 50px;
   place-items: center;
   flex: 0 0 auto;
   border-radius: 8px;
   color: #fff;
-  background: linear-gradient(135deg, #1677ff, #12a37f);
+  background: linear-gradient(135deg, #b18af0, #8b5fd6);
   font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
 }
 
 h1,
@@ -92,13 +95,26 @@ p {
 }
 
 h1 {
-  font-size: clamp(2rem, 5vw, 3.6rem);
+  font-size: clamp(2rem, 5vw, 3.4rem);
   line-height: 0.95;
+}
+
+.brand-name {
+  margin-bottom: 6px;
+  color: var(--accent-dark);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  text-transform: lowercase;
 }
 
 .brand-row p,
 .privacy-note {
   color: var(--muted);
+}
+
+.brand-row .brand-name {
+  color: var(--accent-dark);
 }
 
 .session-form {
@@ -154,7 +170,7 @@ textarea {
 input:focus,
 textarea:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 4px rgba(22, 119, 255, 0.14);
+  box-shadow: 0 0 0 4px rgba(155, 107, 232, 0.18);
 }
 
 .primary-button,
@@ -183,7 +199,7 @@ textarea:focus {
 .secondary-button {
   padding: 0 14px;
   color: var(--accent-dark);
-  background: #e8f1ff;
+  background: #f1e9ff;
 }
 
 .ghost-button {
@@ -219,6 +235,28 @@ textarea:focus {
   border-bottom: 1px solid var(--line);
 }
 
+.chat-title {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.mini-logo {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  flex: 0 0 auto;
+  border: 1px solid #d8c8ef;
+  border-radius: 8px;
+  color: var(--accent-dark);
+  background: var(--soft);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+}
+
 .chat-header h2 {
   margin-top: 2px;
   font-size: 1.25rem;
@@ -234,7 +272,7 @@ textarea:focus {
 .status-bar {
   padding: 9px 20px;
   color: var(--muted);
-  background: #f7f9fc;
+  background: var(--soft);
   border-bottom: 1px solid var(--line);
   font-size: 0.9rem;
 }
@@ -249,7 +287,7 @@ textarea:focus {
   list-style: none;
   background:
     linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)),
-    repeating-linear-gradient(45deg, #eef3f8 0 1px, transparent 1px 12px);
+    repeating-linear-gradient(45deg, #eee5fb 0 1px, transparent 1px 12px);
 }
 
 .message {
